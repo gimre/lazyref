@@ -11,7 +11,7 @@
     "name": "lazyref",
     "repository": {
         "type": "git",
-        "url": "https://github.com/gimre/epoxy"
+        "url": "https://github.com/gimre/lazyref"
     },
     "scripts": { },
     "version": "1.0.0",
