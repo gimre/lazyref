@@ -35,3 +35,22 @@ obj.resolveAs( ( what ) => what + ' is so meta' )
 console.log( obj instanceof Function, obj.call( null, 'this' ) )
 // true "this is so meta"
 ```
+
+## equality check
+```javascript
+const fs = require( 'fs' )
+
+const o = new LazyObject
+const q = new LazyObject
+
+console.log( o.equals( q ) )
+//false
+
+o.resolveAs( fs )
+console.log( o.equals( fs ) )
+// true
+
+q.resolveAs( fs )
+console.log( o.equals( q ) )
+// true
+```

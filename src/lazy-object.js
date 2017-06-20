@@ -1,7 +1,16 @@
 
 'use strict'
 
+const originalConstructor = Symbol( 'equals' )
 const skip = [ 'constructor', 'caller', 'arguments' ]
+
+const equals = function( obj ) {
+    const proto = Object.getPrototypeOf( this )
+    if( obj[ originalConstructor ] === LazyObject ) {
+        return obj.equals( proto )
+    }
+    return obj === proto
+}
 
 const resolveAs = function( obj ) {
     const proto        = Object( obj )
@@ -17,6 +26,8 @@ const resolveAs = function( obj ) {
 
 class LazyObject {
     constructor( ) {
+        this[ originalConstructor ] = LazyObject
+        this.equals    = equals
         this.resolveAs = resolveAs
     }
 }

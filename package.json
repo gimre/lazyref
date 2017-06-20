@@ -14,7 +14,7 @@
         "url": "https://github.com/gimre/lazyref"
     },
     "scripts": { },
-    "version": "1.0.4",
+    "version": "1.0.5",
     "dependencies": { },
     "devDependencies": { }
 }
