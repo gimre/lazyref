@@ -6,7 +6,7 @@
     "bugs": {
         "url": "https://github.com/gimre/lazyref/issues"
     },
-    "description": "Lazy object references for easier metaprogramming",
+    "description": "Lazy, shape-shifting object references for metaprogramming",
     "main": "lib/index.js",
     "name": "lazyref",
     "repository": {
