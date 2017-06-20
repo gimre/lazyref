@@ -1,0 +1,20 @@
+{
+    "author": {
+        "email": "imregabriel@gmail.com",
+        "name": "Gabriel Imre"
+    },
+    "bugs": {
+        "url": "https://github.com/gimre/lazyref/issues"
+    },
+    "description": "Lazy object references for easier metaprogramming",
+    "main": "lib/index.js",
+    "name": "lazyref",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/gimre/epoxy"
+    },
+    "scripts": { },
+    "version": "1.0.0",
+    "dependencies": { },
+    "devDependencies": { }
+}
