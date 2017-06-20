@@ -27,6 +27,11 @@ obj.resolveAs( [ 1, 2, 3 ] )
 console.log( obj instanceof Array, obj.map( n => n ** 2 ) )
 // true [ 1, 4, 9 ]
 
+obj.resolveAs( { works: 'yes' } )
+console.log( obj instanceof Object, obj.works ) 
+// true "yes"
+
+
 obj.resolveAs( ( what ) => what + ' is so meta' )
 console.log( obj instanceof Function, obj.call( null, 'this' ) )
 // true "this is so meta"

@@ -1,6 +1,8 @@
 
 'use strict'
 
+const skip = [ 'constructor', 'caller', 'arguments' ]
+
 const resolveAs = function( obj ) {
     const proto        = Object( obj )
     const protoCeption = Object.getPrototypeOf( proto )
@@ -8,8 +10,8 @@ const resolveAs = function( obj ) {
     Object.setPrototypeOf( this, proto )
 
     Object.getOwnPropertyNames( protoCeption )
+    .filter( k => !~ skip.indexOf( k ) )
     .filter( k => typeof protoCeption[ k ] === 'function' )
-    .filter( k => k !== 'constructor' )
     .forEach( prop => this[ prop ] = proto[ prop ].bind( proto ) )
 }
 
