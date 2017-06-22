@@ -7,8 +7,8 @@ const skip = [ 'constructor', 'caller', 'arguments' ]
 
 const equals = function( obj ) {
     const proto = Object.getPrototypeOf( this )
-    if( obj[ originalConstructor ] === LazyObject ) {
-        return obj.equals( proto )
+    if( obj[ Symbols.constructor ] === LazyObject ) {
+        return obj[ Symbol.equals ]( proto )
     }
     return obj === proto
 }
