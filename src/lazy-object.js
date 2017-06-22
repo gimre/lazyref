@@ -31,7 +31,7 @@ class LazyObject {
             ref = function( ) {
                 const proto = Object.getPrototypeOf( ref )
                 if( typeof proto === 'function' ) {
-                    proto.call( ref, arguments )
+                    return proto.call( ref, arguments )
                 }
             }
         } else {
