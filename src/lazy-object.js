@@ -1,7 +1,8 @@
 
 'use strict'
 
-const originalConstructor = Symbol( 'equals' )
+const Symbols = require( './symbols' )
+
 const skip = [ 'constructor', 'caller', 'arguments' ]
 
 const equals = function( obj ) {
@@ -24,26 +25,24 @@ const resolveAs = function( obj ) {
     .forEach( prop => this[ prop ] = proto[ prop ].bind( proto ) )
 }
 
-class LazyObject {
+exports = module.exports = class LazyObject {
     constructor( Base = Object ) {
         let ref
         if( Base === Function ) {
             ref = function( ) {
                 const proto = Object.getPrototypeOf( ref )
                 if( typeof proto === 'function' ) {
-                    return proto.call( ref, arguments )
+                    return proto.apply( ref, arguments )
                 }
             }
         } else {
             ref = new Base
         }
 
-        ref[ originalConstructor ] = LazyObject
-        ref.equals                 = equals
-        ref.resolveAs              = resolveAs
+        ref[ Symbols.constructor ] = LazyObject
+        ref[ Symbols.equals ]      = equals
+        ref[ Symbols.resolveAs ]   = resolveAs
 
         return ref
     }
 }
-
-exports = module.exports = { LazyObject }
