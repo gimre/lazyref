@@ -25,10 +25,24 @@ const resolveAs = function( obj ) {
 }
 
 class LazyObject {
-    constructor( ) {
-        this[ originalConstructor ] = LazyObject
-        this.equals    = equals
-        this.resolveAs = resolveAs
+    constructor( Base = Object ) {
+        let ref
+        if( Base === Function ) {
+            ref = function( ) {
+                const proto = Object.getPrototypeOf( ref )
+                if( typeof proto === 'function' ) {
+                    proto.call( ref, arguments )
+                }
+            }
+        } else {
+            ref = new Base
+        }
+
+        ref[ originalConstructor ] = LazyObject
+        ref.equals                 = equals
+        ref.resolveAs              = resolveAs
+
+        return ref
     }
 }
 
