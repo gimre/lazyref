@@ -32,6 +32,9 @@ exports = module.exports = class LazyObject {
             ref = function( ) {
                 const proto = Object.getPrototypeOf( ref )
                 if( typeof proto === 'function' ) {
+                    if( new.target ) {
+                        return new proto( ...arguments )
+                    }
                     return proto.apply( ref, arguments )
                 }
             }
